@@ -17,7 +17,7 @@ public class Producto
 
     public void MostrarInformacion()
     {
-        Console.WriteLine("===== PRODUCTO DISPONIBLE =====");
+        Console.WriteLine("===== PRODUCTO REGISTRADO =====");
         Console.WriteLine("Código: " + Codigo);
         Console.WriteLine("Nombre: " + Nombre);
         Console.WriteLine("Precio: $" + Precio);
