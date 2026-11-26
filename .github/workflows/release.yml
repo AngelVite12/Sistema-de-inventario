@@ -1,0 +1,43 @@
+name: Liberacion del Sistema de Inventario
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  liberar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restaurar dependencias
+        run: dotnet restore
+
+      - name: Ejecutar pruebas
+        run: dotnet test tests --no-restore
+
+      - name: Publicar aplicacion
+        run: dotnet publish Sistema-de-inventario.csproj --configuration Release --runtime win-x64 --self-contained true --output ./publicacion
+
+      - name: Crear paquete ZIP
+        run: |
+          cd publicacion
+          zip -r ../sistema-inventario-${GITHUB_REF_NAME}.zip .
+
+      - name: Publicar version en GitHub
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Sistema de Inventario ${{ github.ref_name }}
+          files: sistema-inventario-${{ github.ref_name }}.zip
+          generate_release_notes: true
