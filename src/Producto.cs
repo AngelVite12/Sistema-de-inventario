@@ -19,7 +19,7 @@ public class Producto
     {
         Console.WriteLine("===== PRODUCTO REGISTRADO =====");
         Console.WriteLine("Código: " + Codigo);
-        Console.WriteLine("Nombre: " + Nombre);
+        Console.WriteLine("Nombre: Producto desconocido");
         Console.WriteLine("Precio: $" + Precio);
         Console.WriteLine("Existencia: " + Existencia);
     }
