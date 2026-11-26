@@ -21,6 +21,6 @@ public class Producto
         Console.WriteLine("Código: " + Codigo);
         Console.WriteLine("Nombre: " + Nombre);
         Console.WriteLine("Precio: $" + Precio);
-        Console.WriteLine("Existencia: " + Existencia)
+        Console.WriteLine("Existencia: " + Existencia);
     }
 }
