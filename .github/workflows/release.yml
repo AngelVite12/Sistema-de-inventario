@@ -25,7 +25,7 @@ jobs:
         run: dotnet restore
 
       - name: Ejecutar pruebas
-        run: dotnet test tests --no-restore
+        run: dotnet test tests
 
       - name: Publicar aplicacion
         run: dotnet publish Sistema-de-inventario.csproj --configuration Release --runtime win-x64 --self-contained true --output ./publicacion
